@@ -1,0 +1,12 @@
+.error-banner {
+    padding: 10px;
+    background-color: #ff6347; 
+    margin-bottom: 10px;
+  }
+  
+  .success-banner {
+    padding: 10px;
+    background-color: #32cd32; 
+    color: white;
+    margin-bottom: 10px;
+  }  

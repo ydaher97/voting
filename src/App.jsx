@@ -23,8 +23,9 @@ function App() {
       
       {!user && <LoginPage />}
       {user && <Nav handlePageChange={handlePageChange}/>}
+      {user &&  !page &&  <Dashboard />} 
        {user && user.isAdmin && page && <AdminPage />}
-      {user && !page && <Dashboard />} 
+      
     
       </div>
     
