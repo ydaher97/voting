@@ -1,3 +1,15 @@
+#root {
+  
+}
+
+body {
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
 .error-banner {
     padding: 10px;
     background-color: #ff6347; 
@@ -10,3 +22,7 @@
     color: white;
     margin-bottom: 10px;
   }  
+
+  h1{
+    
+  }

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../providers/AuthContext';
 import { useMessage } from '../providers/MessageContext';
 
-
 const Card = ({ item, handleVote }) => {
   const [vote, setVote] = useState(false);
   const [hasUserVoted, setHasUserVoted] = useState(false);
@@ -44,7 +43,7 @@ const Card = ({ item, handleVote }) => {
   return (
     <div className="card">
       
-      {/* <img src={item.img} alt="" /> */}
+      <img src={`src/assets/${item.src}`} alt="" />
       <h3>{item.name}</h3>
       <p>Votes: {votesByCard[item.id] || 0}</p>
 

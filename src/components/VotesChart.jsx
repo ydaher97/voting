@@ -42,7 +42,7 @@ const CardVotesChart = ({ allUsers }) => {
   };
 
   return (
-    <div style={{ height: '350px', width: '100%', display: 'flex', justifyContent: 'center' }}>
+    <div style={{ height: '350px', width: '100%', display: 'flex', justifyContent: 'center' ,marginTop: '40px'}}>
       <Bar data={chartData} />
     </div>
   );
