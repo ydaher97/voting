@@ -42,8 +42,7 @@ const Card = ({ item, handleVote }) => {
 
   return (
     <div className="card">
-      
-      <img src={item.src} alt="" />
+      <img src={`/public/${item.src}`} alt="" />
       <h3>{item.name}</h3>
       <p>Votes: {votesByCard[item.id] || 0}</p>
 
