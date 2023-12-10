@@ -5,13 +5,13 @@ import './dashboard.css';
 import { useAuth } from '../providers/AuthContext';
 import { useState } from 'react';
 import { useMessage } from '../providers/MessageContext';
-
+import { useTheme } from '../providers/ThemeContext';
 
 const Dashboard = () => {
-  const { user,updateUserAfterVote  } = useAuth();
+  const { user, updateUserAfterVote } = useAuth();
   const [votedCards, setVotedCards] = useState([]);
   const { errorMessage, successMessage, showError, showSuccess } = useMessage();
-
+  const { changeTheme } = useTheme();
 
   const handleVote = async (cardId) => {
     if (votedCards.includes(cardId)) {
@@ -38,18 +38,34 @@ const Dashboard = () => {
       if (response.ok) {
         await updateUserAfterVote();
 
-        showSuccess('Vote successful!'); 
-        setVotedCards([...votedCards, cardId]); 
-        window.location.reload();
+        showSuccess('Vote successful!');
+        setVotedCards([...votedCards, cardId]);
+
+        switch (cardId) {
+          case 1:
+          changeTheme('air');
+            break;
+          case 2:
+            changeTheme('water');
+            break;
+          case 3: 
+            changeTheme('earth');
+            break;
+            case 4: 
+            changeTheme('fire');
+            break;
+          default:
+            changeTheme('default');
+            break;
+        }
+        
       } else {
         console.error('Failed to update user data');
-        showError('error.'); 
-
+        showError('Error.');
       }
     } catch (error) {
       console.error('Error updating user:', error);
     }
-   
   };
 
   return (

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../providers/AuthContext';
-import { useMessage } from '../providers/MessageContext';
+import { useTheme  } from '../providers/ThemeContext';
 
 const Card = ({ item, handleVote }) => {
   const [vote, setVote] = useState(false);
@@ -8,8 +8,26 @@ const Card = ({ item, handleVote }) => {
 
   const [votesByCard, setVotesByCard] = useState({});
    const { user } = useAuth();
+   const { theme } = useTheme();
+  let backgroundColor = '';
 
-
+  switch (theme) {
+    case 'water':
+      backgroundColor = 'blue';
+      break;
+    case 'earth':
+      backgroundColor = 'green';
+      break;
+    case 'air':
+        backgroundColor = 'purple';
+      break;
+    case 'fire':
+        backgroundColor = 'red';
+      break;
+    default:
+      backgroundColor = 'white'; 
+      break;
+  }
   const handleVoteBtn = () => {
     setVote((prev) => !prev);
   };
@@ -26,22 +44,26 @@ const Card = ({ item, handleVote }) => {
           });
         });
         setVotesByCard(cardVotes);
+        setVote(false)
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
 
       });
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     if (user && user.votes) {
       setHasUserVoted(!!user.votes[item.id]);
-      console.log('first')
+     
     }
   }, [item.id, user]);
 
+
+
+
   return (
-    <div className="card">
+    <div className="card" style={{ backgroundColor }}>
       <img src={`/public/${item.src}`} alt="" />
       <h3>{item.name}</h3>
       <p>Votes: {votesByCard[item.id] || 0}</p>
