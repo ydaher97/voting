@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../providers/AuthContext';
 import { useTheme  } from '../providers/ThemeContext';
+import {getImageUrl} from '../utilits/path'
 
 const Card = ({ item, handleVote }) => {
   const [vote, setVote] = useState(false);
@@ -64,7 +65,7 @@ const Card = ({ item, handleVote }) => {
 
   return (
     <div className="card" style={{ backgroundColor }}>
-      <img src={`/public/${item.src}`} alt="" />
+      <img src={getImageUrl(item.src)} alt="" />
       <h3>{item.name}</h3>
       <p>Votes: {votesByCard[item.id] || 0}</p>
 
